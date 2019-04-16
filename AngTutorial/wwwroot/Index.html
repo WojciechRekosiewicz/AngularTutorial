@@ -3,14 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="css/site.css" rel="stylesheet" />
 </head>
+
 <body>
     <h1> Hello Man!</h1>
-  
-    <div>
+
+    <div class="product-info">
         <img src="img/mz.jpg" />
         <h3>Mazda mx-5</h3>
-        <ul>
+        <ul class="product-props">
             <li>Mazdy MX-5 30 th Anniversary Edition</li>
             <li>184 HP</li>
             <li>Roadster</li>
@@ -18,26 +20,26 @@
         </ul>
         <button>BUY</button>
     </div>
-    <form>
-        <label>Your name:</label>
-        <br />
-        <input style="font-size: 18px; width: 200px;" />
-        <br />
-        <label>Email:</label>
-        <br />
-        <input type="email" style="font-size: 18px; width: 200px;" />
-        <br />
-        <label>Subject:</label>
-        <br />
-        <input type="text" style="font-size: 18px; width: 200px;" />
-        <br />
-        <label>Message:</label>
-        <br />
-        <textarea rows="4"></textarea>
-        <br />
-        <input type="submit" value="Send Message" />
-
-
-    </form>
+    <div id="theForm">
+        <form>
+            <label>Your name:</label>
+            <br />
+            <input/>
+            <br />
+            <label>Email:</label>
+            <br />
+            <input type="email" />
+            <br />
+            <label>Subject:</label>
+            <br />
+            <input type="text" />
+            <br />
+            <label>Message:</label>
+            <br />
+            <textarea rows="4"></textarea>
+            <br />
+            <input type="submit" value="Send Message" />
+        </form>
+    </div>
 </body>
 </html>
