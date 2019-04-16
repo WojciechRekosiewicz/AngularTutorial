@@ -1,4 +1,4 @@
-﻿(function() {
+﻿$(document).ready(function() {
 
     console.log("kappa");
 
@@ -16,4 +16,4 @@
     productInfo.on("click", function () {
         console.log("You clicked on " + $(this).text());
     });
-})();
+});
