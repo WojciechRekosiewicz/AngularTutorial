@@ -24,6 +24,7 @@ namespace AngTutorial
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseNodeModules(env);
         }
     }
 }
