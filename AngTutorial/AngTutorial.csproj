@@ -13,4 +13,8 @@
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\img\mz.jpg" />
+  </ItemGroup>
+
 </Project>
