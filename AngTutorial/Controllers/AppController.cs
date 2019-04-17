@@ -37,6 +37,8 @@ namespace AngTutorial.Controllers
             if (ModelState.IsValid)
             {
                 _mailService.SendMessage("ww@gmail.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
+                ViewBag.UserMessage = "Mail Sent";
+                ModelState.Clear();
             }
         
             return View();
