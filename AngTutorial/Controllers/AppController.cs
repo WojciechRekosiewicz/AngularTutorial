@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AngTutorial.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace AngTutorial.Controllers
         }
 
         [HttpPost("contact")]
-        public IActionResult Contact(object model)
+        public IActionResult Contact(ContactViewModel model)
         {
             return View();
         }
