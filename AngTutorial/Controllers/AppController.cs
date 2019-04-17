@@ -1,4 +1,5 @@
-﻿using AngTutorial.ViewModels;
+﻿using AngTutorial.Services;
+using AngTutorial.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,14 @@ namespace AngTutorial.Controllers
 {
     public class AppController : Controller
     {
+        private readonly IMailService _mailService;
+
+        public AppController(IMailService mailService)
+        {
+            _mailService = mailService;
+        }
+
+
         public IActionResult Index()
         {
            
@@ -27,14 +36,9 @@ namespace AngTutorial.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View();
+                _mailService.SendMessage("ww@gmail.com", model.Subject, $"From: {model.Name} - {model.Email}, Message: {model.Message}");
             }
-            else
-            {
-
-            }
-
-
+        
             return View();
         }
 
