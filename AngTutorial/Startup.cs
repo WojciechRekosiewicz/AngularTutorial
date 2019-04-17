@@ -26,6 +26,13 @@ namespace AngTutorial
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
+
+
+
             app.UseNodeModules(env);
             app.UseStaticFiles();
 
