@@ -17,11 +17,13 @@ namespace AngTutorial.Controllers
 
         [HttpGet("contact")]
         public IActionResult Contact()
+        {       
+            return View();
+        }
+
+        [HttpPost("contact")]
+        public IActionResult Contact(object model)
         {
-            ViewBag.Title = "Contact Us";
-
-         
-
             return View();
         }
 
