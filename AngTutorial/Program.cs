@@ -28,7 +28,8 @@ namespace AngTutorial
             //Remove conf options . Prevent legacy code
             builder.Sources.Clear();
 
-            builder.AddJsonFile("config.json", false, true);
+            builder.AddJsonFile("config.json", false, true)
+                .AddEnvironmentVariables();
             
         }
     }

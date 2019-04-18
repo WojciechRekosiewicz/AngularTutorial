@@ -9,6 +9,11 @@ namespace AngTutorial.Data
 {
     public class FilmContext :DbContext
     {
+      
+        public FilmContext(DbContextOptions<FilmContext> options): base(options)
+        {
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
     }

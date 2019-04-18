@@ -1,0 +1,8 @@
+{
+  "Colors": {
+    "Favorite": "black"
+  },
+  "ConnectionStrings": {
+    "FilmConnectionString": "server=(localdb)\\ProjectsV13;Database=FilmDb;Integrated Security=true;MultipleActiveResultSets=true;"
+  }
+}
