@@ -1,60 +1,58 @@
-﻿@*@page
-@model AngTutorial.Views.App.IndexModel*@
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
-    <div class="product-info">
-        <img src="~/img/mz.jpg" />
-        <h3>Mazda mx-5</h3>
-        <ul class="product-props">
-            <li>Mazdy MX-5 30 th Anniversary Edition</li>
-            <li>184 HP</li>
-            <li>Roadster</li>
-            <li>Sports car</li>
-        </ul>
-        <button id="buyButton">BUY</button>
-    </div>
-    <div id="theForm">
-        <form>
-            <label>Your name:</label>
-            <br />
-            <input />
-            <br />
-            <label>Email:</label>
-            <br />
-            <input type="email" />
-            <br />
-            <label>Subject:</label>
-            <br />
-            <input type="text" />
-            <br />
-            <label>Message:</label>
-            <br />
-            <textarea rows="4"></textarea>
-            <br />
-            <input type="submit" value="Send Message" />
-        </form>
-    </div>
+<div class="product-info">
+    <img src="~/img/mz.jpg" />
+    <h3>Mazda mx-5</h3>
+    <ul class="product-props">
+        <li>Mazdy MX-5 30 th Anniversary Edition</li>
+        <li>184 HP</li>
+        <li>Roadster</li>
+        <li>Sports car</li>
+    </ul>
+    <button id="buyButton">BUY</button>
+</div>
+<div id="theForm">
+    <form>
+        <label>Your name:</label>
+        <br />
+        <input />
+        <br />
+        <label>Email:</label>
+        <br />
+        <input type="email" />
+        <br />
+        <label>Subject:</label>
+        <br />
+        <input type="text" />
+        <br />
+        <label>Message:</label>
+        <br />
+        <textarea rows="4"></textarea>
+        <br />
+        <input type="submit" value="Send Message" />
+    </form>
+</div>
 
-    <div>
-        <div id="logginToggle">Login</div>
-        <form class="popup-form">
-            <div>
-                <label>Username</label>
-                <input />
-            </div>
-            <div>
-                <label>Password</label>
-                <input type="password" />
-            </div>
-            <div>
-                <input type="checkbox" />
-                <label>Remember Me?</label>
-            </div>
-            <div>
-                <input type="submit" value="Login" />
-            </div>
-        </form>
-    </div>
+<div>
+    <div id="logginToggle">Login</div>
+    <form class="popup-form">
+        <div>
+            <label>Username</label>
+            <input />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" />
+        </div>
+        <div>
+            <input type="checkbox" />
+            <label>Remember Me?</label>
+        </div>
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+    </form>
+</div>
 
