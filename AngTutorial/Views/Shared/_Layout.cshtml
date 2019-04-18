@@ -3,29 +3,32 @@
 <head>
     @*   <meta charset="utf-8" />*@
     <title>Car shop: @ViewBag.Title</title>
+
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
 
 </head>
 
 <body>
     <header>
-    <h1>Welcome to Car shop</h1>
-    <menu>
-        <ul>
-            <li><a asp-controller="App" asp-action="Index">Home</a></li>
-            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-            <li><a asp-controller="App" asp-action="About">About</a></li>
-        </ul>
-    </menu>
+        <h1>Welcome to Car shop</h1>
+        <menu>
+            <ul>
+                <li><a asp-controller="App" asp-action="Index">Home</a></li>
+                <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+                <li><a asp-controller="App" asp-action="About">About</a></li>
+            </ul>
+        </menu>
     </header>
     <section>
         <h1> @ViewBag.Title</h1>
-        @RenderBody() 
+        @RenderBody()
     </section>
     <footer>Copyright 2019 CR LLC</footer>
 
 
     <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/index.js"></script>
     @RenderSection("Scripts", false)
 
