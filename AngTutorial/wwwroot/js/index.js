@@ -23,14 +23,5 @@
     $logginToggle.on("click", function () {
         $popupForm.fadeToggle(100);
     });
-
-
-
-
-
-
-
-
-
-
+   
 });
