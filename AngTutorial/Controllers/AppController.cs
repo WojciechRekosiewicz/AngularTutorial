@@ -12,20 +12,17 @@ namespace MovieShop.Controllers
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
-    //    private readonly FilmContext _ctx;
         private readonly IFilmRepository _repository;
 
         public AppController(IMailService mailService, IFilmRepository repository)
         {
             _mailService = mailService;
-          //  _ctx = ctx;
             _repository = repository;
         }
 
 
         public IActionResult Index()
         {
-          //  var results = _ctx.Products.ToList();
            return View();
         }
 

@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\mz.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Pages\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
