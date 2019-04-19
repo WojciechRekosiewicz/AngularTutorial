@@ -5,7 +5,8 @@ namespace MovieShop.Data
 {
     public interface IFilmRepository
     {
-        IEnumerable<Product> GetProducts();
+        IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetProductsByCategory(string category);
+        bool SaveAll();
     }
 }

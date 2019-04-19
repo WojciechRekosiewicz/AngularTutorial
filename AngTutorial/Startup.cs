@@ -31,10 +31,13 @@ namespace MovieShop
                 cfg.UseSqlServer(_config.GetConnectionString("FilmConnectionString"));
             });
 
-            services.AddTransient<FilmSeeder>();
 
 
             services.AddTransient<IMailService, NullMailServices>();
+            services.AddTransient<FilmSeeder>();
+
+            services.AddScoped<IFilmRepository, FilmRepository>();
+          
             services.AddMvc();
         }
 

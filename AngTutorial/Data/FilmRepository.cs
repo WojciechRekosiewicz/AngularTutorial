@@ -15,7 +15,7 @@ namespace MovieShop.Data
             _ctx = ctx;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
             return _ctx.Products
                     .OrderBy(p => p.Title)
@@ -28,6 +28,12 @@ namespace MovieShop.Data
             return _ctx.Products
                     .Where(p => p.Category == category)
                     .ToList();
+        }
+
+
+        public bool SaveAll()
+        {
+            return _ctx.SaveChanges() > 0;
         }
     }
 }
