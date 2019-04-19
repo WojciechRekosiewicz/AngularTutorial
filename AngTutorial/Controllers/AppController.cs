@@ -12,19 +12,19 @@ namespace MovieShop.Controllers
     public class AppController : Controller
     {
         private readonly IMailService _mailService;
-        private readonly FilmContext _context;
+        private readonly FilmContext _ctx;
 
-        public AppController(IMailService mailService, FilmContext context)
+        public AppController(IMailService mailService, FilmContext ctx)
         {
             _mailService = mailService;
-            _context = context;
+            _ctx = ctx;
         }
 
 
         public IActionResult Index()
         {
-           
-            return View();
+            var results = _ctx.Products.ToList();
+           return View();
         }
 
 
@@ -57,7 +57,7 @@ namespace MovieShop.Controllers
 
         public IActionResult Shop()
         {
-            var results = from p in _context.Products
+            var results = from p in _ctx.Products
                           orderby p.Category
                           select p;
 
