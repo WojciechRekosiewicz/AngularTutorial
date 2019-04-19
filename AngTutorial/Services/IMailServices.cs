@@ -1,4 +1,4 @@
-﻿namespace AngTutorial.Services
+﻿namespace MovieShop.Services
 {
     public interface IMailService
     {

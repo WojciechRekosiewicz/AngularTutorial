@@ -1,11 +1,11 @@
-﻿using DutchTreat.Data.Entities;
+﻿using MovieShop.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AngTutorial.Data
+namespace MovieShop.Data
 {
     public class FilmContext :DbContext
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace AngTutorial.ViewModels
+namespace MovieShop.ViewModels
 {
     public class ContactViewModel
     {
