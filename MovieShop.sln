@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngTutorial", "AngTutorial\AngTutorial.csproj", "{87D2BFAD-06A2-4161-9436-7ACA22A30900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieShop", "AngTutorial\MovieShop.csproj", "{87D2BFAD-06A2-4161-9436-7ACA22A30900}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
