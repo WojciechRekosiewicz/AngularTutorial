@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieShop.Data
 {
-    public class FilmRepository
+    public class FilmRepository : IFilmRepository
     {
         private readonly FilmContext _ctx;
 
