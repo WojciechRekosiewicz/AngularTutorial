@@ -7,7 +7,7 @@
     @foreach (var p in Model)
     {
         <div class="col-md-4">
-            <img src="~/img/(@p.ArtId).jpg" />
+            <img src="~/img/@(p.Title).jpg" />
             <h3>@p.Category - @p.Length</h3>
             <ul>
                 <li>Price: @p.Price</li>
