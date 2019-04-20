@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using AutoMapper;
+using MovieShop.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace MovieShop
 {
@@ -32,6 +34,14 @@ namespace MovieShop
             {
                 cfg.UseSqlServer(_config.GetConnectionString("FilmConnectionString"));
             });
+
+            services.AddIdentity<StoreUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+                
+            })
+                .AddEntityFrameworkStores<FilmContext>();
+
 
             services.AddAutoMapper();
 
@@ -62,6 +72,8 @@ namespace MovieShop
 
             app.UseNodeModules(env);
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
 
             app.UseMvc(cfg =>
