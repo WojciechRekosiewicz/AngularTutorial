@@ -12,7 +12,9 @@ using MovieShop.Data.Entities;
 namespace MovieShop.Controllers
 {
     [Route("api/[Controller]")]
-    public class ProductsController : Controller
+    [ApiController]
+    [Produces("application/json")]
+    public class ProductsController : ControllerBase
     {
         private readonly IFilmRepository _repository;
         private readonly ILogger<ProductsController> _logger;
@@ -22,17 +24,23 @@ namespace MovieShop.Controllers
             _repository = repository;
             _logger = logger;
         }
+
+
+
         [HttpGet]
-        public IEnumerable<Product> Get()
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public ActionResult<IEnumerable<Product>> Get()
         {
-            return _repository.GetAllProducts();
-        }
-
-
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
+            try
+            {
+                return Ok(_repository.GetAllProducts());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get all products {ex}");
+                return BadRequest("Failed to get all products");
+            }
         }
     }
 }

@@ -38,7 +38,8 @@ namespace MovieShop
 
             services.AddScoped<IFilmRepository, FilmRepository>();
           
-            services.AddMvc();
+            services.AddMvc()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
