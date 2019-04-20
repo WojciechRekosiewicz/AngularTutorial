@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieShop.Data;
 using MovieShop.Data.Entities;
+using MovieShop.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -62,14 +63,40 @@ namespace MovieShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Order model)
+        public IActionResult Post([FromBody]OrderViewModel model)
         {
             try
             {
-                _repository.AddEntity(model);
-                if (_repository.SaveAll())
+                if (ModelState.IsValid)
                 {
-                    return Created($"api/orders/{model.Id}", model);
+                    var newOrder = new Order()
+                    {
+                        OrderDate = model.OrderDate,
+                        OrderNumber = model.OrderNumber,
+                        Id = model.OrderId
+                    };
+
+                    if(newOrder.OrderDate == DateTime.MinValue)
+                    {
+                        newOrder.OrderDate = DateTime.Now;
+                    }
+
+                    _repository.AddEntity(newOrder);
+                    if (_repository.SaveAll())
+                    {
+                        var vm = new OrderViewModel()
+                        {
+                            OrderId = newOrder.Id,
+                            OrderDate = newOrder.OrderDate,
+                            OrderNumber = newOrder.OrderNumber
+                        };
+
+                        return Created($"api/orders/{vm.OrderId}", vm);
+                    }
+                }
+                else
+                {
+                    return BadRequest(ModelState);
                 }
                 
 
