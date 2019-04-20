@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using AutoMapper;
 
 namespace MovieShop
 {
@@ -32,7 +33,7 @@ namespace MovieShop
                 cfg.UseSqlServer(_config.GetConnectionString("FilmConnectionString"));
             });
 
-
+            services.AddAutoMapper();
 
             services.AddTransient<IMailService, NullMailServices>();
             services.AddTransient<FilmSeeder>();
