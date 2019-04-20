@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MovieShop.Data
 {
-    public class FilmContext :DbContext
+    public class FilmContext : IdentityDbContext<StoreUser>
     {
       
         public FilmContext(DbContextOptions<FilmContext> options): base(options)

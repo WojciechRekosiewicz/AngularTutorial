@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using MovieShop.Data.Entities;
 using Newtonsoft.Json;
 using System;
@@ -13,17 +14,41 @@ namespace MovieShop.Data
     {
         private readonly FilmContext _ctx;
         private readonly IHostingEnvironment _hosting;
+        private readonly UserManager<StoreUser> _userManager;
 
-        public FilmSeeder(FilmContext ctx, IHostingEnvironment hosting)
+        public FilmSeeder(FilmContext ctx, IHostingEnvironment hosting, UserManager<StoreUser> userManager)
         {
             _ctx = ctx;
             _hosting = hosting;
+            _userManager = userManager;
         }
 
 
-        public void Seed()
+        public async Task SeedAsync()
         {
             _ctx.Database.EnsureCreated();
+
+
+            StoreUser user = await _userManager.FindByEmailAsync("tony@stark.com");
+            if(user == null)
+            {
+                user = new StoreUser()
+                {
+                    FirstName = "Tony",
+                    LastName = "Stark",
+                    Email = "tony@stark.com",
+                    UserName = "tony@stark.com"
+                };
+
+
+                var result = await _userManager.CreateAsync(user, "IronMan1!");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Couldn't create new user in seeder");
+                }
+            }
+
+
 
             if (!_ctx.Products.Any())
             {
@@ -35,6 +60,7 @@ namespace MovieShop.Data
                 var order = _ctx.Orders.Where(o => o.Id == 1).FirstOrDefault();
                 if(order != null)
                 {
+                    order.User = user;
                     order.Items = new List<OrderItem>()
                     {
                         new OrderItem()

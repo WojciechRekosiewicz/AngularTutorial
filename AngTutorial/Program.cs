@@ -29,7 +29,7 @@ namespace MovieShop
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<FilmSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
         }
 
