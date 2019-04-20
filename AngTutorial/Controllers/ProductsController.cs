@@ -34,7 +34,7 @@ namespace MovieShop.Controllers
         {
             try
             {
-                return Ok(_repository.GetAllOrders());
+                return Ok(_repository.GetAllOrders(true));
             }
             catch (Exception ex)
             {
