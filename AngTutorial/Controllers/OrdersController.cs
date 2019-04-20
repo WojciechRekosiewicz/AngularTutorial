@@ -38,11 +38,26 @@ namespace MovieShop.Controllers
         }
 
 
-
-        // GET: /<controller>/
-        public IActionResult Index()
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
         {
-            return View();
+            try
+            {
+                var order = _repository.GetOrderById(id);
+                if (order != null)
+                {
+                    return Ok(order);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get orders: {ex}");
+                return BadRequest("Failed to get orders");
+            }
         }
     }
 }
