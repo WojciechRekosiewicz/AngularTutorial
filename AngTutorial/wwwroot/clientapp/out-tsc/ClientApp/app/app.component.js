@@ -2,12 +2,12 @@ import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'Movie Shop';
+        this.title = 'Product List';
     }
     AppComponent = tslib_1.__decorate([
         Component({
             selector: 'the-shop',
-            template: "\n      <h1>\n        Welcome to {{title}}!\n      </h1>  \n  ",
+            templateUrl: "./app.component.html",
             styles: []
         })
     ], AppComponent);

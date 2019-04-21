@@ -1,14 +1,10 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
 @Component({
-  selector: 'the-shop',
-  template: `
-      <h1>
-        Welcome to {{title}}!
-      </h1>  
-  `,
-  styles: []
+    selector: 'the-shop',
+    templateUrl: "./app.component.html",
+    styles: []
 })
 export class AppComponent {
-  title = 'Movie Shop';
+    title = 'Product List';
 }

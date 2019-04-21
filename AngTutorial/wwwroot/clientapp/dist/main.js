@@ -23,6 +23,17 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./app/app.component.html":
+/*!********************************!*\
+  !*** ./app/app.component.html ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-9\">\r\n        <h3>{{ title }}</h3>\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        <div class=\"card bg-light p-2\">\r\n        <h3>Cart</h3>\r\n        </div>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
 /***/ "./app/app.component.ts":
 /*!******************************!*\
   !*** ./app/app.component.ts ***!
@@ -39,12 +50,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'Movie Shop';
+        this.title = 'Product List';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'the-shop',
-            template: "\n      <h1>\n        Welcome to {{title}}!\n      </h1>  \n  "
+            template: __webpack_require__(/*! ./app.component.html */ "./app/app.component.html")
         })
     ], AppComponent);
     return AppComponent;
