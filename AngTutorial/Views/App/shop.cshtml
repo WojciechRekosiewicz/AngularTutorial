@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Product>
-
+@section Scripts {
+    <script src="~/ts/storecustomer.js"></script>
+    <script src="~/ts/main.js"></script>
+}
 
 <h1>Shop</h1>
 <p>Count : @Model.Count()</p>
@@ -8,7 +11,7 @@
     {
         <div class="col-md-4">
             <div class="border bg-light rounded p-1">
-                <img src="~/img/@(p.Title).jpg" class="img-fluid" alt="@p.Title"/>
+                <img src="~/img/@(p.Title).jpg" class="img-fluid" alt="@p.Title" />
                 <h3>@p.Title</h3>
                 <ul>
                     <li>Price: @p.Price</li>
