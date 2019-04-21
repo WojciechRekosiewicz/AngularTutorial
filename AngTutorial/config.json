@@ -8,7 +8,12 @@
   "Logging": {
     "LogLevel": {
       "MovieShop": "Information",
-      "Microsoft":  "Warning"
+      "Microsoft": "Warning"
     }
+  },
+  "Tokens": {
+    "Key": "sdfsdfsdfsdfSDfaadfga",
+    "Issuer": "localhost",
+    "Audience": "users"
   }
 }

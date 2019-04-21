@@ -30,18 +30,31 @@ namespace MovieShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FilmContext>(cfg =>
-            {
-                cfg.UseSqlServer(_config.GetConnectionString("FilmConnectionString"));
-            });
+
+
+            services.AddAuthentication()
+                .AddCookie()
+                .AddJwtBearer();
 
             services.AddIdentity<StoreUser, IdentityRole>(cfg =>
             {
                 cfg.User.RequireUniqueEmail = true;
-                
-            })
-                .AddEntityFrameworkStores<FilmContext>();
 
+            })
+                     .AddEntityFrameworkStores<FilmContext>();
+
+
+             
+            //services.AddAuthentication()
+            //    .AddCookie()
+            //    .AddJwtBearer();
+
+
+
+            services.AddDbContext<FilmContext>(cfg =>
+            {
+                cfg.UseSqlServer(_config.GetConnectionString("FilmConnectionString"));
+            });
 
             services.AddAutoMapper();
 
@@ -67,13 +80,13 @@ namespace MovieShop
             {
                 app.UseExceptionHandler("/error");
             }
-
+            app.UseAuthentication();
 
 
             app.UseNodeModules(env);
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+          
 
 
             app.UseMvc(cfg =>
