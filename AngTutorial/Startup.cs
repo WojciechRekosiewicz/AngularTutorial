@@ -14,6 +14,8 @@ using Newtonsoft.Json;
 using AutoMapper;
 using MovieShop.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MovieShop
 {
@@ -34,7 +36,17 @@ namespace MovieShop
 
             services.AddAuthentication()
                 .AddCookie()
-                .AddJwtBearer();
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = _config["Tokens:Issuer"],
+                        ValidAudience = _config["Tokens:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]))
+                    };
+                
+                
+                });
 
             services.AddIdentity<StoreUser, IdentityRole>(cfg =>
             {
@@ -42,14 +54,6 @@ namespace MovieShop
 
             })
                      .AddEntityFrameworkStores<FilmContext>();
-
-
-             
-            //services.AddAuthentication()
-            //    .AddCookie()
-            //    .AddJwtBearer();
-
-
 
             services.AddDbContext<FilmContext>(cfg =>
             {
