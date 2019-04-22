@@ -268,7 +268,7 @@ module.exports = ".product-info img{\r\n    max-width: 100px;\r\n    max-height:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n\r\n\r\n    <div class=\"product-info col-md-4 well well-sm\" *ngFor=\"let p of products\">\r\n        <!--<div class=\"card bg-light p-1 m-1\">-->\r\n            <img src=\"/img/{{ p.title }}.jpg\" class=\"img-responsive\" [alt]=\"p.title\" />\r\n            <div class=\"product-name\">{{ p.title }}</div>\r\n            <!--<ul class=\"product-props\">-->\r\n                <div><strong>Price</strong>: {{ p.price | currency:\"USD\":true }}</div>\r\n                <div><strong>Author</strong> : {{ p.artist }}</div>\r\n                <div><strong>Length</strong> : {{ p.length }} minutes</div>\r\n                <div><strong>Description</strong>: {{ p.artDescription }}</div>\r\n                <div><strong>Category</strong>: {{ p.category }} </div>\r\n                <div><strong>Age restriction</strong>: {{ p.artId }}</div>\r\n           <!-- </ul>-->\r\n            <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\">BUY</button>\r\n        <!--</div>-->\r\n    </div>\r\n\r\n\r\n</div>"
+module.exports = "<div class=\"row\">\r\n\r\n\r\n    <div class=\"product-info col-md-4 well well-sm\" *ngFor=\"let p of products\">\r\n        <!--<div class=\"card bg-light p-1 m-1\">-->\r\n            <img src=\"/img/{{ p.title }}.jpg\" class=\"img-responsive\" [alt]=\"p.title\" />\r\n            <div class=\"product-name\">{{ p.title }}</div>\r\n            <!--<ul class=\"product-props\">-->\r\n                <div><strong>Price</strong>: {{ p.price | currency:\"USD\":true }}</div>\r\n                <div><strong>Author</strong> : {{ p.artist }}</div>\r\n                <div><strong>Length</strong> : {{ p.length }} minutes</div>\r\n                <div><strong>Description</strong>: {{ p.artDescription }}</div>\r\n                <div><strong>Category</strong>: {{ p.category }} </div>\r\n                <div><strong>Age restriction</strong>: {{ p.artId }}</div>\r\n           <!-- </ul>-->\r\n            <button id=\"buyButton\" class=\"btn btn-success btn-sm pull-right\" (click)=\"addProduct(p)\">BUY</button>\r\n        <!--</div>-->\r\n    </div>\r\n\r\n\r\n</div>"
 
 /***/ }),
 
@@ -301,6 +301,9 @@ var ProductList = /** @class */ (function () {
                 _this.products = _this.data.products;
             }
         });
+    };
+    ProductList.prototype.addProduct = function (product) {
+        this.data.addToOrder(product);
     };
     ProductList = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

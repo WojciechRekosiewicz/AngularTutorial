@@ -13,7 +13,7 @@
                 <div><strong>Category</strong>: {{ p.category }} </div>
                 <div><strong>Age restriction</strong>: {{ p.artId }}</div>
            <!-- </ul>-->
-            <button id="buyButton" class="btn btn-success btn-sm pull-right">BUY</button>
+            <button id="buyButton" class="btn btn-success btn-sm pull-right" (click)="addProduct(p)">BUY</button>
         <!--</div>-->
     </div>
 
