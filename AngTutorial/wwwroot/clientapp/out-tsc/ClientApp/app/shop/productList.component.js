@@ -4,19 +4,23 @@ import { DataService } from '../shared/dataService';
 var ProductList = /** @class */ (function () {
     function ProductList(data) {
         this.data = data;
-        this.products = [];
+        this.products = data.products;
     }
+    //ngOnInit(): void {
+    //    this.data.loadProducts()
+    //        .subscribe(success => {
+    //            if (success) {
+    //                this.products = this.data.products;
+    //            }
+    //        });
+    //}
     ProductList.prototype.ngOnInit = function () {
         var _this = this;
         this.data.loadProducts()
-            .subscribe(function (success) {
-            if (success) {
-                _this.products = _this.data.products;
-            }
-        });
+            .subscribe(function () { return _this.products = _this.data.products; });
     };
     ProductList.prototype.addProduct = function (product) {
-        this.data.addToOrder(product);
+        this.data.AddToOrder(product);
     };
     ProductList = tslib_1.__decorate([
         Component({

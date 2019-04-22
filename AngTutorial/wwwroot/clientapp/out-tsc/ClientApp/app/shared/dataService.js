@@ -18,17 +18,37 @@ var DataService = /** @class */ (function () {
             return true;
         }));
     };
-    ;
-    DataService.prototype.addToOrder = function (newProduct) {
-        var item = new OrderItem();
-        item.productId = newProduct.id;
-        item.productTitle = newProduct.title;
-        item.productCategory = newProduct.category;
-        item.productArtId = newProduct.artId;
-        item.productLength = newProduct.length;
-        item.unitPrice = newProduct.price;
-        item.quantity = 1;
-        this.order.items.push(item);
+    DataService.prototype.AddToOrder = function (product) {
+        var item = this.order.items.find(function (i) { return i.productId == product.id; });
+        //var item: OrderItem = new OrderItem();
+        if (item) {
+            item.quantity++;
+        }
+        else {
+            item = new OrderItem();
+            item.productId = product.id;
+            item.productTitle = product.title;
+            item.productCategory = product.category;
+            item.productArtId = product.artId;
+            item.productLength = product.length;
+            item.unitPrice = product.price;
+            item.quantity = 1;
+            this.order.items.push(item);
+        }
+        //    if (item) {
+        //        item.quantity++;
+        //    }
+        //    else {
+        //        item.productId = product.id;
+        //        item.productTitle = product.title;
+        //        item.productCategory = product.category;
+        //        item.productArtId = product.artId;
+        //        item.productLength = product.length;
+        //        item.unitPrice = product.price;
+        //        item.quantity = 1;
+        //    }
+        //    this.order.items.push(item);
+        //}
     };
     DataService = tslib_1.__decorate([
         Injectable(),

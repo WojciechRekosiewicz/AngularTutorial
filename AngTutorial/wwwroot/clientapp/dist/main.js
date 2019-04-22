@@ -153,17 +153,37 @@ var DataService = /** @class */ (function () {
             return true;
         }));
     };
-    ;
-    DataService.prototype.addToOrder = function (newProduct) {
-        var item = new _order__WEBPACK_IMPORTED_MODULE_4__["OrderItem"]();
-        item.productId = newProduct.id;
-        item.productTitle = newProduct.title;
-        item.productCategory = newProduct.category;
-        item.productArtId = newProduct.artId;
-        item.productLength = newProduct.length;
-        item.unitPrice = newProduct.price;
-        item.quantity = 1;
-        this.order.items.push(item);
+    DataService.prototype.AddToOrder = function (product) {
+        var item = this.order.items.find(function (i) { return i.productId == product.id; });
+        //var item: OrderItem = new OrderItem();
+        if (item) {
+            item.quantity++;
+        }
+        else {
+            item = new _order__WEBPACK_IMPORTED_MODULE_4__["OrderItem"]();
+            item.productId = product.id;
+            item.productTitle = product.title;
+            item.productCategory = product.category;
+            item.productArtId = product.artId;
+            item.productLength = product.length;
+            item.unitPrice = product.price;
+            item.quantity = 1;
+            this.order.items.push(item);
+        }
+        //    if (item) {
+        //        item.quantity++;
+        //    }
+        //    else {
+        //        item.productId = product.id;
+        //        item.productTitle = product.title;
+        //        item.productCategory = product.category;
+        //        item.productArtId = product.artId;
+        //        item.productLength = product.length;
+        //        item.unitPrice = product.price;
+        //        item.quantity = 1;
+        //    }
+        //    this.order.items.push(item);
+        //}
     };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -212,7 +232,7 @@ var OrderItem = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Shopping Cart</h3>\r\n<div> Count: {{ data.order.items.length }}</div>"
+module.exports = "<h3>Shopping Cart</h3>\r\n<div> #Items: {{ data.order.items.length }}</div>\r\n<table class=\"table table-condensed table-hover\">\r\n    <thead>\r\n        <tr>\r\n            <td>Title</td>\r\n            <td>#</td>\r\n            <td>$</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{o.productTitle}}</td>\r\n            <td>{{o.quantity}}</td>\r\n            <td>{{o.unitPrice | currency}}</td>\r\n            <td>{{(o.unitPrice * o.quantity) | currency}}</td>\r\n        </tr>\r\n    </tbody>\r\n\r\n</table>"
 
 /***/ }),
 
@@ -291,19 +311,23 @@ __webpack_require__.r(__webpack_exports__);
 var ProductList = /** @class */ (function () {
     function ProductList(data) {
         this.data = data;
-        this.products = [];
+        this.products = data.products;
     }
+    //ngOnInit(): void {
+    //    this.data.loadProducts()
+    //        .subscribe(success => {
+    //            if (success) {
+    //                this.products = this.data.products;
+    //            }
+    //        });
+    //}
     ProductList.prototype.ngOnInit = function () {
         var _this = this;
         this.data.loadProducts()
-            .subscribe(function (success) {
-            if (success) {
-                _this.products = _this.data.products;
-            }
-        });
+            .subscribe(function () { return _this.products = _this.data.products; });
     };
     ProductList.prototype.addProduct = function (product) {
-        this.data.addToOrder(product);
+        this.data.AddToOrder(product);
     };
     ProductList = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

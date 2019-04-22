@@ -10,22 +10,30 @@ import { Product } from '../shared/product';
 })
 export class ProductList implements OnInit {
 
+    public products: Product[];
+
     constructor(private data: DataService) {
+        this.products = data.products;
     }
 
-    public products: Product[] = [];
+    //ngOnInit(): void {
+    //    this.data.loadProducts()
+    //        .subscribe(success => {
+    //            if (success) {
+    //                this.products = this.data.products;
+    //            }
+    //        });
+    //}
 
-    ngOnInit(): void {
+
+    ngOnInit() {
         this.data.loadProducts()
-            .subscribe(success => {
-                if (success) {
-                    this.products = this.data.products;
-                }
-            });
+            .subscribe(() => this.products = this.data.products);
+      
     }
 
 
     addProduct(product: Product) {
-        this.data.addToOrder(product);
+        this.data.AddToOrder(product);
     }
 }

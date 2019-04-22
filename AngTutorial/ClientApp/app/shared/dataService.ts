@@ -18,31 +18,35 @@ export class DataService {
 
     public products: Product[] = [];
 
-    loadProducts(): Observable<boolean> {
+      loadProducts(): Observable<boolean> {
         return this.http.get("/api/products")
-            .pipe(
+          .pipe(
             map((data: any[]) => {
-                this.products = data;
-                return true;
+              this.products = data;
+              return true;
             }));
-    };
+      }
+
+    public AddToOrder(product: Product) {
 
 
+        let item: OrderItem = this.order.items.find(i => i.productId == product.id);
 
-    public addToOrder(newProduct: Product) {
+        if (item) {
 
-     
+            item.quantity++;
+        }
+        else {
+            item = new OrderItem();
+            item.productId = product.id;
+            item.productTitle = product.title;
+            item.productCategory = product.category;
+            item.productArtId = product.artId;
+            item.productLength = product.length;
+            item.unitPrice = product.price;
+            item.quantity = 1;
 
-        var item: OrderItem = new OrderItem();
-
-        item.productId = newProduct.id;
-        item.productTitle = newProduct.title;
-        item.productCategory = newProduct.category;
-        item.productArtId = newProduct.artId;
-        item.productLength = newProduct.length;
-        item.unitPrice = newProduct.price;
-        item.quantity = 1;
-
-        this.order.items.push(item);
+            this.order.items.push(item);
+        }
     }
 }
