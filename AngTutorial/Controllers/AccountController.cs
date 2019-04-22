@@ -109,7 +109,7 @@ namespace MovieShop.Controllers
                             _config["Tokens:Issuer"],
                             _config["Tokens:Audience"],
                             claims,
-                            expires: DateTime.UtcNow.AddMinutes(30),
+                            expires: DateTime.UtcNow.AddMinutes(300),
                             signingCredentials: creds
                             );
 
