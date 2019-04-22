@@ -1,20 +1,20 @@
 ﻿<div class="row">
 
 
-    <div class="product-info col-md-4" *ngFor="let p of products">
-        <div class="card bg-light p-1 m-1">
-            <img src="/img/{{ p.title }}.jpg" class="img-fluid" [alt]="p.title" />
-            <h3>{{ p.title }}</h3>
-            <ul class="product-props">
-                <li><strong>Price</strong>: {{ p.price | currency:"USD":true }}</li>
-                <li><strong>Author</strong> : {{ p.artist }}</li>
-                <li><strong>Length</strong> : {{ p.length }} minutes</li>
-                <li><strong>Description</strong>: {{ p.artDescription }}</li>
-                <li><strong>Category</strong>: {{ p.category }} </li>
-                <li><strong>Age restriction</strong>: {{ p.artId }}</li>
-            </ul>
-            <button id="buyButton" class="btn btn-success">BUY</button>
-        </div>
+    <div class="product-info col-md-4 well well-sm" *ngFor="let p of products">
+        <!--<div class="card bg-light p-1 m-1">-->
+            <img src="/img/{{ p.title }}.jpg" class="img-responsive" [alt]="p.title" />
+            <div class="product-name">{{ p.title }}</div>
+            <!--<ul class="product-props">-->
+                <div><strong>Price</strong>: {{ p.price | currency:"USD":true }}</div>
+                <div><strong>Author</strong> : {{ p.artist }}</div>
+                <div><strong>Length</strong> : {{ p.length }} minutes</div>
+                <div><strong>Description</strong>: {{ p.artDescription }}</div>
+                <div><strong>Category</strong>: {{ p.category }} </div>
+                <div><strong>Age restriction</strong>: {{ p.artId }}</div>
+           <!-- </ul>-->
+            <button id="buyButton" class="btn btn-success btn-sm pull-right">BUY</button>
+        <!--</div>-->
     </div>
 
 
