@@ -165,7 +165,7 @@ var DataService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <ul>\r\n        <li *ngFor=\"let p of products\">{{ p.title }}: {{ p.price | currency:\"USD\":true }}</li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n\r\n\r\n    <div class=\"product-info col-md-4\" *ngFor=\"let p of products\">\r\n        <div class=\"card bg-light p-1 m-1\">\r\n            <img src=\"/img/{{ p.title }}.jpg\" class=\"img-fluid\" [alt]=\"p.title\" />\r\n            <h3>{{ p.title }}</h3>\r\n            <ul class=\"product-props\">\r\n                <li><strong>Price</strong>: {{ p.price | currency:\"USD\":true }}</li>\r\n                <li><strong>Author</strong> : {{ p.artist }}</li>\r\n                <li><strong>Length</strong> : {{ p.length }} minutes</li>\r\n                <li><strong>Description</strong>: {{ p.artDescription }}</li>\r\n                <li><strong>Category</strong>: {{ p.category }} </li>\r\n                <li><strong>Age restriction</strong>: {{ p.artId }}</li>\r\n            </ul>\r\n            <button id=\"buyButton\" class=\"btn btn-success\">BUY</button>\r\n        </div>\r\n    </div>\r\n\r\n\r\n</div>"
 
 /***/ }),
 
