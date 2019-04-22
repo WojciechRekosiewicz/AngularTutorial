@@ -155,7 +155,6 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.AddToOrder = function (product) {
         var item = this.order.items.find(function (i) { return i.productId == product.id; });
-        //var item: OrderItem = new OrderItem();
         if (item) {
             item.quantity++;
         }
@@ -170,20 +169,6 @@ var DataService = /** @class */ (function () {
             item.quantity = 1;
             this.order.items.push(item);
         }
-        //    if (item) {
-        //        item.quantity++;
-        //    }
-        //    else {
-        //        item.productId = product.id;
-        //        item.productTitle = product.title;
-        //        item.productCategory = product.category;
-        //        item.productArtId = product.artId;
-        //        item.productLength = product.length;
-        //        item.unitPrice = product.price;
-        //        item.quantity = 1;
-        //    }
-        //    this.order.items.push(item);
-        //}
     };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -207,11 +192,22 @@ var DataService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Order", function() { return Order; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderItem", function() { return OrderItem; });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "../node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+
 var Order = /** @class */ (function () {
     function Order() {
         this.orderDate = new Date();
         this.items = new Array();
     }
+    Object.defineProperty(Order.prototype, "subtotal", {
+        get: function () {
+            return lodash__WEBPACK_IMPORTED_MODULE_0__["sum"](lodash__WEBPACK_IMPORTED_MODULE_0__["map"](this.items, function (i) { return i.unitPrice * i.quantity; }));
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
     return Order;
 }());
 
@@ -232,7 +228,7 @@ var OrderItem = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Shopping Cart</h3>\r\n<div> #Items: {{ data.order.items.length }}</div>\r\n<table class=\"table table-condensed table-hover\">\r\n    <thead>\r\n        <tr>\r\n            <td>Title</td>\r\n            <td>#</td>\r\n            <td>$</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{o.productTitle}}</td>\r\n            <td>{{o.quantity}}</td>\r\n            <td>{{o.unitPrice | currency}}</td>\r\n            <td>{{(o.unitPrice * o.quantity) | currency}}</td>\r\n        </tr>\r\n    </tbody>\r\n\r\n</table>"
+module.exports = "<h3>Shopping Cart</h3>\r\n<div> #Items: {{ data.order.items.length }}</div>\r\n<div>Subtotal: {{ data.order.subtotal | currency:\"USD\":true  }}</div>\r\n<table class=\"table table-condensed table-hover\">\r\n    <thead>\r\n        <tr>\r\n            <td>Title</td>\r\n            <td>#</td>\r\n            <td>$</td>\r\n            <td>Total</td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let o of data.order.items\">\r\n            <td>{{o.productTitle}}</td>\r\n            <td>{{o.quantity}}</td>\r\n            <td>{{o.unitPrice | currency}}</td>\r\n            <td>{{(o.unitPrice * o.quantity) | currency}}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>"
 
 /***/ }),
 
